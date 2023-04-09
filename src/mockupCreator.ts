@@ -20,8 +20,7 @@ const mockUps: Array<MockData> = [{
         }, placement: {
             resize: {width: 1087, height: 1629}, crop: {width: 1087, height: 1475}, position: {offsetX: 1046, offsetY: 208}
         }
-    }
-
+    },
 ];
 
 const crop = (inputFile: string, outputFile: string, data: CropData) => {

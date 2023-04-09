@@ -5,7 +5,7 @@ import logger from "./logger.js";
 import runCommand from "./command.js";
 import {createDesign} from "./sizeCreator.js";
 import createMockup from "./mockupCreator.js";
-import {SIZES} from "./config.js";
+import {RATIO_CHART_BLACK, RATIO_CHART_WHITE, SIZES} from "./config.js";
 
 const [_, __, source] = process.argv;
 
@@ -63,6 +63,10 @@ for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
     createDesign({designName, pageIndex, source, outputFolder});
     const mockupFolder = `${outputFolder}/mockups`;
     createMockup({directoryPath: mockupFolder, design: `${outputFolder}/${SIZES[0]}.jpg`});
+
+    // Copy static assets to mockup directory
+    const command = `cp ${pageIndex % 2 == 0 ? RATIO_CHART_BLACK : RATIO_CHART_WHITE} ${mockupFolder}`;
+    runCommand(command);
 }
 
 runCommand(`open ${outputDirectory}`);
