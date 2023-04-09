@@ -1,12 +1,13 @@
 import runCommand from "./command.js";
 import logger from "./logger.js";
 import {existsSync, mkdirSync} from "fs";
+import {DIGITAL_DOWNLOAD_LOGO, MOCK_1} from "./config.js";
 
 const mockUps: Array<MockData> = [{
-    filename: `../Miscellaneous/poster.jpg`, crop: {
+    filename: MOCK_1, crop: {
         width: 3456, height: 3456, originX: 815, originY: 0
     }, digitalDownload: {
-        filename: `../Miscellaneous/digital_download_logo.png`, position: "SouthWest", offsetX: +100, offsetY: +100
+        filename: DIGITAL_DOWNLOAD_LOGO, position: "SouthWest", offsetX: +100, offsetY: +100
     }, placement: {
         resize: {width: 1930, height: 2896}, crop: {width: 1930, height: 2512}, position: {offsetX: 1774, offsetY: 527}
     }
@@ -26,7 +27,7 @@ const addOverlay = (inputFile: string, data: OverlayData) => {
     runCommand(digitalDownloadCommand);
 }
 
-const adjustDesignWithinMockupPlaceholder = (mockFile: string, design:string, outputFile:string,data: PlacementData) => {
+const adjustDesignWithinMockupPlaceholder = (mockFile: string, design: string, outputFile: string, data: PlacementData) => {
     const {resize, crop, position} = data;
 
     // Step 1: scale input image to proportionally to fit within the placeholder frame and save it as _temp.png
@@ -40,14 +41,14 @@ const adjustDesignWithinMockupPlaceholder = (mockFile: string, design:string, ou
     runCommand(command);
 }
 
-const createMockup = (directoryPath: string, design: string) => {
-    const directory = `${directoryPath}/mockups`
-    if (!existsSync(directory)) mkdirSync(directory);
+const createMockup = ({directoryPath, design}: { directoryPath: string; design: string }) => {
+    logger(`CREATING MOCKUP`);
+    if (!existsSync(directoryPath)) mkdirSync(directoryPath);
 
     mockUps.forEach((data: MockData, index: number) => {
         const {filename: mockupPlaceholder, crop: cropData, digitalDownload, placement} = data;
-        const outputFile = `${directory}/${index}.png`;
-        adjustDesignWithinMockupPlaceholder(mockupPlaceholder,design,outputFile, placement);
+        const outputFile = `${directoryPath}/${index + 1}.jpg`;
+        adjustDesignWithinMockupPlaceholder(mockupPlaceholder, design, outputFile, placement);
         // Always Crop first
         crop(outputFile, outputFile, cropData);
         // Followed by adding overlays
