@@ -1,7 +1,7 @@
 import logger from "./logger.js";
 import {existsSync, mkdirSync} from "fs";
 import runCommand from "./command.js";
-import {SIZES, DPI} from "./config.js";
+import {DPI, SIZES} from "./config.js";
 
 export const createDesign = ({
                                  designName,

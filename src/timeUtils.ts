@@ -19,14 +19,5 @@ export const timeConversion = (duration: number): string => {
     if (seconds > 0) {
         portions.push(seconds + 's');
     }
-
     return portions.join(' ');
-}
-
-export const measureTime = (block : () => void) : string => {
-    const startTime = Date.now();
-    block();
-    const endTime = Date.now();
-    const timeTakenToCompleted = endTime - startTime;
-    return timeConversion(timeTakenToCompleted);
 }

@@ -18,7 +18,9 @@ const mockUps: Array<MockData> = [{
         }, digitalDownload: {
             filename: DIGITAL_DOWNLOAD_LOGO, position: "SouthWest", offsetX: +100, offsetY: +100
         }, placement: {
-            resize: {width: 1087, height: 1629}, crop: {width: 1087, height: 1475}, position: {offsetX: 1046, offsetY: 208}
+            resize: {width: 1087, height: 1629},
+            crop: {width: 1087, height: 1475},
+            position: {offsetX: 1046, offsetY: 208}
         }
     },
 ];
