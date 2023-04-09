@@ -1,23 +1,23 @@
 export const timeConversion = (duration: number): string => {
-    const portions: Array<string> = [];
+  const portions: Array<string> = [];
 
-    const msInHour = 1000 * 60 * 60;
-    const hours = Math.trunc(duration / msInHour);
-    if (hours > 0) {
-        portions.push(hours + 'h');
-        duration = duration - (hours * msInHour);
-    }
+  const msInHour = 1000 * 60 * 60;
+  const hours = Math.trunc(duration / msInHour);
+  if (hours > 0) {
+    portions.push(hours + "h");
+    duration = duration - hours * msInHour;
+  }
 
-    const msInMinute = 1000 * 60;
-    const minutes = Math.trunc(duration / msInMinute);
-    if (minutes > 0) {
-        portions.push(minutes + 'm');
-        duration = duration - (minutes * msInMinute);
-    }
+  const msInMinute = 1000 * 60;
+  const minutes = Math.trunc(duration / msInMinute);
+  if (minutes > 0) {
+    portions.push(minutes + "m");
+    duration = duration - minutes * msInMinute;
+  }
 
-    const seconds = Math.trunc(duration / 1000);
-    if (seconds > 0) {
-        portions.push(seconds + 's');
-    }
-    return portions.join(' ');
-}
+  const seconds = Math.trunc(duration / 1000);
+  if (seconds > 0) {
+    portions.push(seconds + "s");
+  }
+  return portions.join(" ");
+};
