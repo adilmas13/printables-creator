@@ -1,0 +1,21 @@
+{
+  "name": "creator",
+  "version": "1.0.0",
+  "description": "converts individual pages in the pdf to different aspect ratios",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node dist/index.js",
+    "watch": "tsc -w -p ."
+  },
+  "author": "Adil Shaikh",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "pdf-lib": "^1.17.1"
+  }
+}
