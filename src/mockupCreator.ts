@@ -1,7 +1,7 @@
 import runCommand from "./command.js";
 import logger from "./logger.js";
 import {existsSync, mkdirSync} from "fs";
-import {DIGITAL_DOWNLOAD_LOGO, MOCK_1} from "./config.js";
+import {DIGITAL_DOWNLOAD_LOGO, MOCK_1, MOCK_2} from "./config.js";
 
 const mockUps: Array<MockData> = [{
     filename: MOCK_1, crop: {
@@ -11,7 +11,18 @@ const mockUps: Array<MockData> = [{
     }, placement: {
         resize: {width: 1930, height: 2896}, crop: {width: 1930, height: 2512}, position: {offsetX: 1774, offsetY: 527}
     }
-}];
+},
+    {
+        filename: MOCK_2, crop: {
+            width: 3000, height: 3000, originX: 0, originY: 0
+        }, digitalDownload: {
+            filename: DIGITAL_DOWNLOAD_LOGO, position: "SouthWest", offsetX: +100, offsetY: +100
+        }, placement: {
+            resize: {width: 1087, height: 1629}, crop: {width: 1087, height: 1475}, position: {offsetX: 1046, offsetY: 208}
+        }
+    }
+
+];
 
 const crop = (inputFile: string, outputFile: string, data: CropData) => {
     logger(`Cropping Mockup : ${inputFile}`);
