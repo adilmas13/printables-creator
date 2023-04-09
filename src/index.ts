@@ -3,12 +3,14 @@ import {PDFDocument} from 'pdf-lib';
 import {timeConversion} from "./timeUtils.js";
 import logger from "./logger.js";
 import runCommand from "./command.js";
+import createMockup from "./mockupCreator.js";
 
 const [_, __, filePath] = process.argv;
 
 const outputFolderName = (() => {
     const temp = filePath.substring(filePath.lastIndexOf('/') + 1);
-    return temp.substring(0, temp.lastIndexOf('.'));
+    // return temp.substring(0, temp.lastIndexOf('.'));
+    return 'output'
 })();
 
 const outputDirectory = `${filePath.substring(0, filePath.lastIndexOf('/') + 1)}${outputFolderName}`;
@@ -60,13 +62,13 @@ const createDesign = (index: number) => {
         const [width, height] = size.split("x").map(it => +it).map(it => it * dpi);
         const outputFile = `${directoryPath}/${size}.jpg`;
         logger(`RESIZING DESIGN ${index} TO : ${size}`);
-        let command = `convert ${filePath}[${index}] -quality 100 -resize ${width}x${height}^ -gravity center -extend ${width}x${height} ${outputFile}`;
+        let command = `convert ${filePath}[${index}] -quality 100 -resize ${width}x${height}^ -gravity center -extent ${width}x${height} ${outputFile}`;
         runCommand(command);
 
         command = `convert -units PixelsPerInch ${outputFile} -density ${dpi} ${outputFile}`;
         runCommand(command);
     });
-
+    createMockup(directoryPath, `${directoryPath}/24x36.jpg`);
     // zip(directoryPath);
 }
 
