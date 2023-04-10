@@ -9,13 +9,6 @@ type Position =
   | "South"
   | "SouthEast";
 
-type CropData = {
-  width: number;
-  height: number;
-  originX: number;
-  originY: number;
-};
-
 type OverlayData = {
   filename: string;
   position: Position;
@@ -25,13 +18,11 @@ type OverlayData = {
 
 type MockData = {
   filename: string;
-  crop: CropData;
   digitalDownload: OverlayData;
-  placement: PlacementData;
+  designPlacement: PlacementData;
 };
 
 type PlacementData = {
-  resize: { width: number; height: number };
-  crop: { width: number; height: number };
-  position: { offsetX: number; offsetY: number };
+  dimension: { width: number; height: number };
+  offset: { x: number; y: number };
 };

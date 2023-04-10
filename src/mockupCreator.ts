@@ -1,57 +1,236 @@
 import runCommand from "./command.js";
 import logger from "./logger.js";
 import { existsSync, mkdirSync } from "fs";
-import { DIGITAL_DOWNLOAD_LOGO, MOCK_1, MOCK_2 } from "./config.js";
+import {
+  DIGITAL_DOWNLOAD_LOGO,
+  MOCK_1,
+  MOCK_10,
+  MOCK_11,
+  MOCK_12,
+  MOCK_13,
+  MOCK_14,
+  MOCK_15,
+  MOCK_16,
+  MOCK_2,
+  MOCK_3,
+  MOCK_4,
+  MOCK_5,
+  MOCK_6,
+  MOCK_7,
+  MOCK_8,
+  MOCK_9,
+} from "./config.js";
 
 const mockUps: Array<MockData> = [
   {
     filename: MOCK_1,
-    crop: {
-      width: 3456,
-      height: 3456,
-      originX: 815,
-      originY: 0,
-    },
     digitalDownload: {
       filename: DIGITAL_DOWNLOAD_LOGO,
       position: "SouthWest",
       offsetX: +100,
       offsetY: +100,
     },
-    placement: {
-      resize: { width: 486, height: 689 },
-      crop: { width: 1930, height: 2512 },
-      position: { offsetX: 862, offsetY: 185 },
+    designPlacement: {
+      dimension: { width: 486, height: 689 },
+      offset: { x: 862, y: 185 },
     },
   },
-  // {
-  //   filename: MOCK_2,
-  //   crop: {
-  //     width: 3000,
-  //     height: 3000,
-  //     originX: 0,
-  //     originY: 0,
-  //   },
-  //   digitalDownload: {
-  //     filename: DIGITAL_DOWNLOAD_LOGO,
-  //     position: "SouthWest",
-  //     offsetX: +100,
-  //     offsetY: +100,
-  //   },
-  //   placement: {
-  //     resize: { width: 1087, height: 1629 },
-  //     crop: { width: 1087, height: 1475 },
-  //     position: { offsetX: 1046, offsetY: 208 },
-  //   },
-  // },
+  {
+    filename: MOCK_2,
+    digitalDownload: {
+      filename: DIGITAL_DOWNLOAD_LOGO,
+      position: "SouthWest",
+      offsetX: +100,
+      offsetY: +100,
+    },
+    designPlacement: {
+      dimension: { width: 450, height: 647 },
+      offset: { x: 858, y: 177 },
+    },
+  },
+  {
+    filename: MOCK_3,
+    digitalDownload: {
+      filename: DIGITAL_DOWNLOAD_LOGO,
+      position: "SouthWest",
+      offsetX: +100,
+      offsetY: +100,
+    },
+    designPlacement: {
+      dimension: { width: 520, height: 742 },
+      offset: { x: 285, y: 168 },
+    },
+  },
+  {
+    filename: MOCK_4,
+    digitalDownload: {
+      filename: DIGITAL_DOWNLOAD_LOGO,
+      position: "SouthWest",
+      offsetX: +100,
+      offsetY: +100,
+    },
+    designPlacement: {
+      dimension: { width: 930, height: 1218 },
+      offset: { x: 932, y: 324 },
+    },
+  },
+  {
+    filename: MOCK_5,
+    digitalDownload: {
+      filename: DIGITAL_DOWNLOAD_LOGO,
+      position: "SouthEast",
+      offsetX: +60,
+      offsetY: +60,
+    },
+    designPlacement: {
+      dimension: { width: 936, height: 1360 },
+      offset: { x: 492, y: 242 },
+    },
+  },
+  {
+    filename: MOCK_6,
+    digitalDownload: {
+      filename: DIGITAL_DOWNLOAD_LOGO,
+      position: "SouthWest",
+      offsetX: +100,
+      offsetY: +100,
+    },
+    designPlacement: {
+      dimension: { width: 690, height: 940 },
+      offset: { x: 720, y: 550 },
+    },
+  },
+  {
+    filename: MOCK_7,
+    digitalDownload: {
+      filename: DIGITAL_DOWNLOAD_LOGO,
+      position: "SouthWest",
+      offsetX: +60,
+      offsetY: +60,
+    },
+    designPlacement: {
+      dimension: { width: 810, height: 1380 },
+      offset: { x: 540, y: 300 },
+    },
+  },
+  {
+    filename: MOCK_8,
+    digitalDownload: {
+      filename: DIGITAL_DOWNLOAD_LOGO,
+      position: "SouthWest",
+      offsetX: +100,
+      offsetY: +100,
+    },
+    designPlacement: {
+      dimension: { width: 768, height: 1005 },
+      offset: { x: 1053, y: 180 },
+    },
+  },
+  {
+    filename: MOCK_9,
+    digitalDownload: {
+      filename: DIGITAL_DOWNLOAD_LOGO,
+      position: "SouthWest",
+      offsetX: +100,
+      offsetY: +100,
+    },
+    designPlacement: {
+      dimension: { width: 504, height: 756 },
+      offset: { x: 981, y: 123 },
+    },
+  },
+  {
+    filename: MOCK_10,
+    digitalDownload: {
+      filename: DIGITAL_DOWNLOAD_LOGO,
+      position: "SouthWest",
+      offsetX: +100,
+      offsetY: +100,
+    },
+    designPlacement: {
+      dimension: { width: 519, height: 745 },
+      offset: { x: 1194, y: 166 },
+    },
+  },
+  {
+    filename: MOCK_11,
+    digitalDownload: {
+      filename: DIGITAL_DOWNLOAD_LOGO,
+      position: "SouthEast",
+      offsetX: +100,
+      offsetY: +100,
+    },
+    designPlacement: {
+      dimension: { width: 830, height: 1230 },
+      offset: { x: 380, y: 320 },
+    },
+  },
+  {
+    filename: MOCK_12,
+    digitalDownload: {
+      filename: DIGITAL_DOWNLOAD_LOGO,
+      position: "SouthEast",
+      offsetX: +100,
+      offsetY: +100,
+    },
+    designPlacement: {
+      dimension: { width: 900, height: 1360 },
+      offset: { x: 200, y: 340 },
+    },
+  },
+  {
+    filename: MOCK_13,
+    digitalDownload: {
+      filename: DIGITAL_DOWNLOAD_LOGO,
+      position: "SouthEast",
+      offsetX: +100,
+      offsetY: +100,
+    },
+    designPlacement: {
+      dimension: { width: 600, height: 980 },
+      offset: { x: 650, y: 310 },
+    },
+  },
+  {
+    filename: MOCK_14,
+    digitalDownload: {
+      filename: DIGITAL_DOWNLOAD_LOGO,
+      position: "SouthEast",
+      offsetX: +100,
+      offsetY: +100,
+    },
+    designPlacement: {
+      dimension: { width: 685, height: 870 },
+      offset: { x: 920, y: 140 },
+    },
+  },
+  {
+    filename: MOCK_15,
+    digitalDownload: {
+      filename: DIGITAL_DOWNLOAD_LOGO,
+      position: "SouthEast",
+      offsetX: +100,
+      offsetY: +100,
+    },
+    designPlacement: {
+      dimension: { width: 630, height: 910 },
+      offset: { x: 220, y: 90 },
+    },
+  },
+  {
+    filename: MOCK_16,
+    digitalDownload: {
+      filename: DIGITAL_DOWNLOAD_LOGO,
+      position: "SouthEast",
+      offsetX: +100,
+      offsetY: +100,
+    },
+    designPlacement: {
+      dimension: { width: 550, height: 780 },
+      offset: { x: 726, y: 192 },
+    },
+  },
 ];
-
-const crop = (inputFile: string, outputFile: string, data: CropData) => {
-  logger(`Cropping Mockup : ${inputFile}`);
-  const { width, height, originX, originY } = data;
-  const cropCommand = `convert ${inputFile} -crop ${width}x${height}+${originX}+${originY} -resize 2000x2000 ${outputFile}`;
-  runCommand(cropCommand);
-};
 
 const addOverlay = (inputFile: string, data: OverlayData) => {
   const { filename: overlayFile, position, offsetX, offsetY } = data;
@@ -66,16 +245,17 @@ const adjustDesignWithinMockupPlaceholder = (
   outputFile: string,
   data: PlacementData
 ) => {
-  const { resize, crop, position } = data;
+  const {
+    dimension: { width, height },
+    offset: { x, y },
+  } = data;
 
   // Step 1: scale input image to proportionally to fit within the placeholder frame and save it as _temp.png
-  let command = `convert ${design} -resize ${resize.width}x${resize.height}^ -gravity center -extent ${resize.width}x${resize.height} ${outputFile}`;
+  let command = `convert ${design} -resize ${width}x${height}^ -gravity center -extent ${width}x${height} ${outputFile}`;
   runCommand(command);
-  // Step 2: crop any excess height or width as it can overflow the frame due to proportional scaling
-  command = `convert ${outputFile} -gravity center -crop ${crop.width}x${crop.height}+0+0 ${outputFile}`;
-  // runCommand(command);
-  // Step 3: place the cropped _temp.png within the frame
-  command = `convert ${mockFile} ${outputFile} -gravity NorthWest -geometry +${position.offsetX}+${position.offsetY} -composite ${outputFile}`;
+
+  // Step 2: place the cropped _temp.png within the frame
+  command = `convert ${mockFile} ${outputFile} -gravity NorthWest -geometry +${x}+${y} -composite ${outputFile}`;
   runCommand(command);
 };
 
@@ -92,20 +272,16 @@ const createMockup = ({
   mockUps.forEach((data: MockData, index: number) => {
     const {
       filename: mockupPlaceholder,
-      crop: cropData,
       digitalDownload,
-      placement,
+      designPlacement,
     } = data;
-    const outputFile = `${directoryPath}/${index + 1}.jpg`;
+    const outputFile = `${directoryPath}/${index}.jpg`;
     adjustDesignWithinMockupPlaceholder(
       mockupPlaceholder,
       design,
       outputFile,
-      placement
+      designPlacement
     );
-    // Always Crop first
-    // crop(outputFile, outputFile, cropData);
-    // Followed by adding overlays
     addOverlay(outputFile, digitalDownload);
   });
 };
