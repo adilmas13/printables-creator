@@ -57,7 +57,7 @@ const zip = (directory: string) => {
 const startTime = Date.now();
 
 makeOutputDirectory();
-const pageCount = await getTotalDesignCount();
+const pageCount = Math.min(await getTotalDesignCount(), 2);
 logger(`TOTAL DESIGNS : ${pageCount} <===`);
 
 for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
