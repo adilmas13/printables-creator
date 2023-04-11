@@ -25,10 +25,21 @@ export const createDesign = ({
       .map((it) => it * DPI);
     const outputFile = `${outputFolder}/${size}.jpg`;
     logger(`RESIZING DESIGN ${designName} TO : ${size}`);
-    let command = `convert ${source}[${pageIndex}] -quality 100 -resize ${width}x${height}^ -gravity center -extent ${width}x${height} ${outputFile}`;
+    const command = [
+      `convert`,
+       `${source}[${pageIndex}]`,
+       `-quality 100`,
+       `-resize ${width}x${height}^`,
+       `-gravity center`,
+       `-extent ${width}x${height}`,
+       `-units PixelsPerInch -density ${DPI}`,
+       `-type truecolor`,
+       `-colorspace RGB`, 
+       `${outputFile}` 
+    ].join(' ');
     runCommand(command);
 
-    command = `convert -units PixelsPerInch ${outputFile} -density ${DPI} ${outputFile}`;
-    runCommand(command);
+    // command = `convert -units PixelsPerInch ${outputFile} -density ${DPI} ${outputFile}`;
+    // runCommand(command);
   });
 };
