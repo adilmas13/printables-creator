@@ -19,7 +19,7 @@ import {
   MOCK_8,
   MOCK_9,
 } from "../config.js";
-import { logger } from "../logger/index.js";
+import { LogColor, logger } from "../logger/index.js";
 
 const mockUps: Array<MockData> = [
   {
@@ -262,14 +262,18 @@ const adjustDesignWithinMockupPlaceholder = (
 export const createMockup = ({
   directoryPath,
   design,
+  designName,
 }: {
   directoryPath: string;
   design: string;
+  designName: string;
 }) => {
-  logger(`CREATING MOCKUP`);
+  logger(`CREATING MOCKUP : ${designName}`, LogColor.magenta);
   if (!existsSync(directoryPath)) mkdirSync(directoryPath);
 
   mockUps.forEach((data: MockData, index: number) => {
+    logger(`MOCKUP : ${index} for ${designName}`, LogColor.cyan);
+
     const {
       filename: mockupPlaceholder,
       digitalDownload,

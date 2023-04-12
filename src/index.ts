@@ -5,7 +5,7 @@ import runCommand from "./command.js";
 import { RATIO_CHART_BLACK, RATIO_CHART_WHITE, SIZES } from "./config.js";
 import { createDesign } from "./resizer/index.js";
 import { createMockup } from "./mock-creator/index.js";
-import { logger } from "./logger/index.js";
+import { LogColor, logger } from "./logger/index.js";
 
 const [_, __, source] = process.argv;
 
@@ -58,7 +58,7 @@ const startTime = Date.now();
 
 makeOutputDirectory();
 const pageCount = await getTotalDesignCount();
-logger(`TOTAL DESIGNS : ${pageCount} <===`);
+logger(`TOTAL DESIGNS : ${pageCount}`, LogColor.magenta);
 
 for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
   const designName = `design-${pageIndex + 1}`;
@@ -68,6 +68,7 @@ for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
   createMockup({
     directoryPath: mockupFolder,
     design: `${outputFolder}/${SIZES[0]}.jpg`,
+    designName,
   });
 
   // Copy static assets to mockup directory

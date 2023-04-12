@@ -1,12 +1,12 @@
 import child from "child_process";
-import { logger } from "./logger/index.js";
+import { LogColor, logger } from "./logger/index.js";
 
 const runCommand = (command: string) => {
-  console.log("RUNNING CMD > ", command);
+  logger(`RUNNING CMD > ${command}`, LogColor.grey);
   try {
     child.execSync(command);
   } catch (e) {
-    logger(`FAILED TO RUN COMMAND : ${command}`);
+    logger(`FAILED TO RUN COMMAND : ${command}`, LogColor.red);
     console.log(e);
     throw e;
   }

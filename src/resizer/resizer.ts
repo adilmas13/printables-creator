@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync } from "fs";
 import runCommand from "../command.js";
 import { DPI, SIZES } from "../config.js";
-import { logger } from "../logger/index.js";
+import { LogColor, logger } from "../logger/index.js";
 
 export const createDesign = ({
   designName,
@@ -14,7 +14,7 @@ export const createDesign = ({
   source: string;
   outputFolder: string;
 }) => {
-  logger(`CREATING DESIGN : ${designName}`);
+  logger(`CREATING DESIGN : ${designName}`, LogColor.blue);
 
   if (!existsSync(outputFolder)) mkdirSync(outputFolder);
 
@@ -24,7 +24,7 @@ export const createDesign = ({
       .map((it) => +it)
       .map((it) => it * DPI);
     const outputFile = `${outputFolder}/${size}.jpg`;
-    logger(`RESIZING DESIGN ${designName} TO : ${size}`);
+    logger(`RESIZING DESIGN ${designName} TO : ${size}`, LogColor.green);
     const command = [
       `convert`,
       `${source}[${pageIndex}]`,
