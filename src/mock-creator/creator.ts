@@ -1,5 +1,4 @@
-import runCommand from "./command.js";
-import logger from "./logger.js";
+import runCommand from "../command.js";
 import { existsSync, mkdirSync } from "fs";
 import {
   DIGITAL_DOWNLOAD_LOGO,
@@ -19,7 +18,8 @@ import {
   MOCK_7,
   MOCK_8,
   MOCK_9,
-} from "./config.js";
+} from "../config.js";
+import { logger } from "../logger/index.js";
 
 const mockUps: Array<MockData> = [
   {
@@ -259,7 +259,7 @@ const adjustDesignWithinMockupPlaceholder = (
   runCommand(command);
 };
 
-const createMockup = ({
+export const createMockup = ({
   directoryPath,
   design,
 }: {
@@ -285,5 +285,3 @@ const createMockup = ({
     addOverlay(outputFile, digitalDownload);
   });
 };
-
-export default createMockup;

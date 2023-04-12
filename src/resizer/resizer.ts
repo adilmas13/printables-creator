@@ -1,7 +1,7 @@
-import logger from "./logger.js";
 import { existsSync, mkdirSync } from "fs";
-import runCommand from "./command.js";
-import { DPI, SIZES } from "./config.js";
+import runCommand from "../command.js";
+import { DPI, SIZES } from "../config.js";
+import { logger } from "../logger/index.js";
 
 export const createDesign = ({
   designName,
@@ -27,16 +27,16 @@ export const createDesign = ({
     logger(`RESIZING DESIGN ${designName} TO : ${size}`);
     const command = [
       `convert`,
-       `${source}[${pageIndex}]`,
-       `-quality 100`,
-       `-resize ${width}x${height}^`,
-       `-gravity center`,
-       `-extent ${width}x${height}`,
-       `-units PixelsPerInch -density ${DPI}`,
-       `-type truecolor`,
-       `-colorspace RGB`, 
-       `${outputFile}` 
-    ].join(' ');
+      `${source}[${pageIndex}]`,
+      `-quality 100`,
+      `-resize ${width}x${height}^`,
+      `-gravity center`,
+      `-extent ${width}x${height}`,
+      `-units PixelsPerInch -density ${DPI}`,
+      `-type truecolor`,
+      `-colorspace RGB`,
+      `${outputFile}`,
+    ].join(" ");
     runCommand(command);
 
     // command = `convert -units PixelsPerInch ${outputFile} -density ${DPI} ${outputFile}`;

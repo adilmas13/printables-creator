@@ -1,11 +1,11 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync } from "fs";
 import { PDFDocument } from "pdf-lib";
 import { timeConversion } from "./timeUtils.js";
-import logger from "./logger.js";
 import runCommand from "./command.js";
-import { createDesign } from "./sizeCreator.js";
-import createMockup from "./mockupCreator.js";
 import { RATIO_CHART_BLACK, RATIO_CHART_WHITE, SIZES } from "./config.js";
+import { createDesign } from "./resizer/index.js";
+import { createMockup } from "./mock-creator/index.js";
+import { logger } from "./logger/index.js";
 
 const [_, __, source] = process.argv;
 

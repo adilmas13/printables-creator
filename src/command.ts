@@ -1,5 +1,5 @@
 import child from "child_process";
-import logger from "./logger.js";
+import { logger } from "./logger/index.js";
 
 const runCommand = (command: string) => {
   console.log("RUNNING CMD > ", command);
