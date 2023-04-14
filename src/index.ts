@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync } from "fs";
 import { PDFDocument } from "pdf-lib";
-import { timeConversion } from "./timeUtils.js";
+import { timeConversion } from "./time-utils.js";
 import runCommand from "./command.js";
 import { RATIO_CHART_BLACK, RATIO_CHART_WHITE, SIZES } from "./config.js";
 import { createDesign } from "./resizer/index.js";
@@ -69,6 +69,7 @@ for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
     directoryPath: mockupFolder,
     design: `${outputFolder}/${SIZES[0]}.jpg`,
     designName,
+    mockFor: pageIndex % 2 == 0 ? "BLACK" : "WHITE",
   });
 
   // Copy static assets to mockup directory

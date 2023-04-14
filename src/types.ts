@@ -9,6 +9,8 @@ type Position =
   | "South"
   | "SouthEast";
 
+type MockFor = "WHITE" | "BLACK";
+
 type OverlayData = {
   filename: string;
   position: Position;
@@ -20,6 +22,7 @@ type MockData = {
   filename: string;
   digitalDownload: OverlayData;
   designPlacement: PlacementData;
+  mockFor: Array<MockFor>;
 };
 
 type PlacementData = {
