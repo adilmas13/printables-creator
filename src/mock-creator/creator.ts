@@ -1,5 +1,5 @@
-import runCommand from "../command.js";
 import { existsSync, mkdirSync } from "fs";
+import runCommand from "../command.js";
 import { LogColor, logger } from "../logger/index.js";
 import {
   getBlackMockPlaceholder,

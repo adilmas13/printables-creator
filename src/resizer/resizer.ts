@@ -38,8 +38,5 @@ export const createDesign = ({
       `${outputFile}`,
     ].join(" ");
     runCommand(command);
-
-    // command = `convert -units PixelsPerInch ${outputFile} -density ${DPI} ${outputFile}`;
-    // runCommand(command);
   });
 };
