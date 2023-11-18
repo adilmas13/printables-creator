@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && node dist/index.js",
-    "watch": "tsc -w -p ."
+    "watch": "tsc -w -p .",
+    "build": "tsc"
   },
   "author": "Adil Shaikh",
   "license": "ISC",

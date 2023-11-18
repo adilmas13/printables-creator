@@ -1,17 +1,15 @@
-import { existsSync, mkdirSync, readdirSync, readFileSync } from "fs";
+import { existsSync, mkdirSync, readFileSync } from "fs";
 import { PDFDocument } from "pdf-lib";
-import { timeConversion } from "./time-utils.js";
 import runCommand from "./command.js";
 import { RATIO_CHART_BLACK, RATIO_CHART_WHITE, SIZES } from "./config.js";
-import { createDesign } from "./resizer/index.js";
-import { createMockup } from "./mock-creator/index.js";
 import { LogColor, logger } from "./logger/index.js";
+import { createMockup } from "./mock-creator/index.js";
+import { createDesign } from "./resizer/index.js";
+import { timeConversion } from "./time-utils.js";
 
 const [_, __, source] = process.argv;
 
 const outputFolderName = (() => {
-  const temp = source.substring(source.lastIndexOf("/") + 1);
-  // return temp.substring(0, temp.lastIndexOf('.'));
   return "output";
 })();
 
@@ -31,27 +29,6 @@ const makeOutputDirectory = () => {
     logger("CREATING OUTPUT DIRECTORY");
     mkdirSync(outputDirectory);
   }
-};
-
-/*
- * zip is broken
- * currently zipped folder is empty
- * */
-const zip = (directory: string) => {
-  const tempFolder = `${directory}/designs`;
-  if (!existsSync(tempFolder)) {
-    mkdirSync(tempFolder);
-  }
-
-  readdirSync(directory).forEach((it) => {
-    if (it.includes(".jpg")) {
-      const command = `cp -r ${directory}/${it} ${tempFolder}`;
-      runCommand(command);
-    }
-  });
-
-  const zipCommand = `zip -r ${tempFolder}.zip ${tempFolder}`;
-  runCommand(zipCommand);
 };
 
 const startTime = Date.now();
