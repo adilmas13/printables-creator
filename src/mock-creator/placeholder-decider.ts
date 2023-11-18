@@ -84,8 +84,8 @@ const mockUps: Array<MockData> = [
       offsetY: +100,
     },
     designPlacement: {
-      dimension: { width: 1968, height: 2720 },
-      offset: { x: 1320, y: 1032 },
+      dimension: { width: 837, height: 1158 },
+      offset: { x: 579, y: 456 },
     },
     mockFor: ["WHITE", "BLACK"],
   },
